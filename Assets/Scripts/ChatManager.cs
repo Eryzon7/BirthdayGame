@@ -76,6 +76,21 @@ public class ChatManager : MonoBehaviour
     }
     public IEnumerator ChatSequence()
     {
+        switch(GameManager.Instance.checkMiniGames())
+        {
+            case 0:
+                break;
+                
+            case 1:
+                break;
+                
+            case 2:
+                break;
+                
+            case 3:
+                break;
+
+        }
         yield return SendMessage(new ChatMessage
         {
             senderName = SenderName,
