@@ -79,42 +79,123 @@ public class ChatManager : MonoBehaviour
         switch(GameManager.Instance.checkMiniGames())
         {
             case 0:
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "Hey Chou Happy birthday :)"
+                });
+
+                yield return new WaitForSeconds(1f);
+
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "Bad news for the party tonight"
+                });
+
+                yield return new WaitForSeconds(1.5f);
+
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "Primal aspids are attacking the balloons, quick defend them"
+                });
+
+                yield return new WaitForSeconds(1f);
+
+                Arrow.gameObject.SetActive(true);
                 break;
                 
             case 1:
+                if(GameManager.Instance.paddleGameFailed)
+                {
+                    yield return SendMessage(new ChatMessage
+                    {
+                        senderName = SenderName,
+                        text = "Unlucky Chou, but don't worry i found some more balloons"
+                    });
+                }
+                else
+                {
+                    yield return SendMessage(new ChatMessage
+                    {
+                        senderName = SenderName,
+                        text = "Lets go Chou, now we have the decoration for the party"
+                    });
+                }
+                
+                yield return new WaitForSeconds(1f);
+
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "Now for the next thing, what is a party without music"
+                });
+
+                yield return new WaitForSeconds(1.5f);
+
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "Unfortunatly there is a musical lock on the speaker so you have to remove that, good luck"
+                });
+
+                yield return new WaitForSeconds(1f);
+
+                Arrow.gameObject.SetActive(true);
                 break;
                 
             case 2:
+                if (GameManager.Instance.musicGameFailed)
+                {
+                    yield return SendMessage(new ChatMessage
+                    {
+                        senderName = SenderName,
+                        text = "nice try Chou, but don't worry i hacked into the speaker"
+                    });
+                }
+                else
+                {
+                    yield return SendMessage(new ChatMessage
+                    {
+                        senderName = SenderName,
+                        text = "Lets go Chou, well done opening the lock"
+                    });
+                }
+
+                yield return new WaitForSeconds(1f);
+
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "As you can hear we now have music, interact with the TV to change the song"
+                });
+
+                yield return new WaitForSeconds(1.5f);
+
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "I was just informed the cake was delivered to the other building without informing you"
+                });
+
+                yield return new WaitForSeconds(1f);
+
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "So you're gonna have to make a new cake"
+                });
+
+                yield return new WaitForSeconds(1f);
+
+                Arrow.gameObject.SetActive(true);
                 break;
-                
+
             case 3:
                 break;
 
         }
-        yield return SendMessage(new ChatMessage
-        {
-            senderName = SenderName,
-            text = "Hey Chou Happy birthday :)"
-        });
-
-        yield return new WaitForSeconds(1f);
-
-        yield return SendMessage(new ChatMessage
-        {
-            senderName = SenderName,
-            text = "Bad news for the party tonight"
-        });
-
-        yield return new WaitForSeconds(1.5f);
-
-        yield return SendMessage(new ChatMessage
-        {
-            senderName = SenderName,
-            text = "Primal aspids are attacking the balloons, quick defend them"
-        });
-
-        yield return new WaitForSeconds(1f);
-
-        Arrow.gameObject.SetActive(true);
+        
     }
 }
