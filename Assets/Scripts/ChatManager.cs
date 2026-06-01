@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ChatManager : MonoBehaviour
 {
     public GameObject messagePrefab;
+    [SerializeField] private GameObject decoration;
     public Transform contentParent;
     public Button Arrow;
 
@@ -71,6 +72,10 @@ public class ChatManager : MonoBehaviour
    
     IEnumerator Start()
     {
+        if (GameManager.Instance.paddleGameCompleted)
+        {
+            decoration.SetActive(true);
+        }
         yield return new WaitForSeconds(3f);
         audioSource.Play();
     }

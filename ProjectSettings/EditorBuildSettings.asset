@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/balloon defend.unity
     guid: fd02eb80ab68ddf429dfd3b964205736
+  - enabled: 1
+    path: Assets/Scenes/music lock.unity
+    guid: b85aea06153af89479185ed71317ce67
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

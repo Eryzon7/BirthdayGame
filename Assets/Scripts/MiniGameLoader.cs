@@ -12,7 +12,7 @@ public class MiniGameLoader : MonoBehaviour
                 break;
 
             case 1:
-                SceneManager.LoadScene("Music Game");
+                SceneManager.LoadScene("music lock");
                 break;
 
             case 2:
