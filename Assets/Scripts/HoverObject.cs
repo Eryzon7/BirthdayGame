@@ -4,7 +4,7 @@ using TMPro;
 public class HoverObject : MonoBehaviour
 {
     public GameObject hoverText;
-    public GameObject PC;
+    public GameObject Object;
     public ChatManager chatManager;
 
     private void OnMouseEnter()
@@ -20,7 +20,7 @@ public class HoverObject : MonoBehaviour
     
     private void OnMouseDown()
     {
-        PC.SetActive(true);
+        Object.SetActive(true);
         StartCoroutine(chatManager.ChatSequence());
 
     }

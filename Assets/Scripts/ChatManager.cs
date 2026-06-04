@@ -7,6 +7,7 @@ public class ChatManager : MonoBehaviour
 {
     public GameObject messagePrefab;
     [SerializeField] private GameObject decoration;
+    [SerializeField] private GameObject notes;
     public Transform contentParent;
     public Button Arrow;
 
@@ -76,6 +77,11 @@ public class ChatManager : MonoBehaviour
         {
             decoration.SetActive(true);
         }
+        if (GameManager.Instance.musicGameCompleted)
+        {
+            notes.SetActive(true);
+        }
+
         yield return new WaitForSeconds(3f);
         audioSource.Play();
     }

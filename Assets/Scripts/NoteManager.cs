@@ -7,21 +7,26 @@ public class NoteManager : MonoBehaviour
 {
     public GameObject notePrefab;
     public BeatManager beatManager;
+    public BeatScore beatScore;
 
     public List<Note> activeNotes = new List<Note>();
-    private int maxSteps = 30;
 
     public Transform[] laneSpawns;
     public float rowSpacing = 5f;
 
     public float timing;
 
-    public float perfectWindow = 0.1f;
+    public float perfectWindow = 0.27f;
     public float goodWindow = 0.3f;
+
+    [SerializeField] private int perfectHitScore = 2;
+    [SerializeField] private int goodHitScore = 1;
 
     [SerializeField] NoteChart chartNote;
 
     public int Score = 0;
+
+    public System.Action songOver;
 
     private void Start()
     {
@@ -38,29 +43,41 @@ public class NoteManager : MonoBehaviour
             if (note.lane == lane && note.step == 0)
             {
                 timing = beatManager.timer;
+                Debug.Log(timing);
                 bestNote = note;
             }
         }
-        if (timing < perfectWindow)
+        if (bestNote != null)
         {
-            Score = +2;
-            RemoveNote(bestNote);
-        }
-        else if (timing < goodWindow)
-        {
-            Score = +1;
-            RemoveNote(bestNote);
+            if (timing < perfectWindow)
+            {
+                beatScore.ComboCounter();
+                beatScore.UpdateScore(perfectHitScore);
+                Debug.Log("perfect hit");
+                RemoveNote(bestNote);
+            }
+            else if (timing < goodWindow)
+            {
+                beatScore.ComboCounter();
+                beatScore.UpdateScore(goodHitScore);
+                RemoveNote(bestNote);
+            }
         }
         else
         {
-            RemoveNote(bestNote);
+            beatScore.ComboReset();
         }
+        
     }
 
     void RemoveNote(Note note)
     {
         activeNotes.Remove(note);
         Destroy(note.gameObject);
+        if (activeNotes.Count <= 0)
+        {
+            songOver?.Invoke();
+        }
     }
     void OnEnable()
     {
@@ -81,10 +98,10 @@ public class NoteManager : MonoBehaviour
             note.step--;
             UpdateNotePosition(note);
 
-            if (note.step > maxSteps)
+            if (note.step < 0)
             {
-                Destroy(note.gameObject);
-                activeNotes.RemoveAt(i);
+                beatScore.ComboReset();
+                RemoveNote(note);
             }
         }
     }
