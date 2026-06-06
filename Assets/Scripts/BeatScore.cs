@@ -12,7 +12,6 @@ public class BeatScore : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private NoteManager noteManager;
     [SerializeField] private TMP_Text victoryText;
-
     [SerializeField] private Confetti confetti;
 
     public void UpdateScore(int add)

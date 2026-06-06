@@ -18,11 +18,6 @@ public class MiniGameLoader : MonoBehaviour
             case 2:
                 SceneManager.LoadScene("Cake Game");
                 break;
-
-            
-
         }
-
-        
     }
 }
