@@ -80,7 +80,6 @@ public class ChatManager : MonoBehaviour
         if (GameManager.Instance.musicGameCompleted)
         {
             TV.SetActive(true);
-
         }
 
         yield return new WaitForSeconds(3f);
@@ -94,7 +93,7 @@ public class ChatManager : MonoBehaviour
                 yield return SendMessage(new ChatMessage
                 {
                     senderName = SenderName,
-                    text = "Hey Chou Happy birthday :)"
+                    text = "Hey Chou Happy early birthday :)"
                 });
 
                 yield return new WaitForSeconds(1f);
@@ -132,7 +131,7 @@ public class ChatManager : MonoBehaviour
                     yield return SendMessage(new ChatMessage
                     {
                         senderName = SenderName,
-                        text = "Lets go Chou, now we have the decoration for the party"
+                        text = "nice going Chou, now we have the decoration for the party"
                     });
                 }
                 
@@ -175,14 +174,6 @@ public class ChatManager : MonoBehaviour
                     });
                 }
 
-                yield return new WaitForSeconds(1f);
-
-                yield return SendMessage(new ChatMessage
-                {
-                    senderName = SenderName,
-                    text = "As you can hear we now have music, interact with the TV to change the song"
-                });
-
                 yield return new WaitForSeconds(1.5f);
 
                 yield return SendMessage(new ChatMessage
@@ -205,9 +196,23 @@ public class ChatManager : MonoBehaviour
                 break;
 
             case 3:
-                break;
+               
+                yield return new WaitForSeconds(1.5f);
 
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "Amazingly Done Chou, now you have everything to throw a killer party"
+                });
+
+                yield return new WaitForSeconds(1f);
+
+                yield return SendMessage(new ChatMessage
+                {
+                    senderName = SenderName,
+                    text = "I hope u liked the little adventure and once again Happy birthday!!!"
+                });
+                break;
         }
-        
     }
 }

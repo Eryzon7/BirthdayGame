@@ -16,7 +16,7 @@ public class MiniGameLoader : MonoBehaviour
                 break;
 
             case 2:
-                SceneManager.LoadScene("Cake Game");
+                SceneManager.LoadScene("cake stack");
                 break;
         }
     }

@@ -40,6 +40,10 @@ public class BeatScore : MonoBehaviour
         {
             StartCoroutine(WinGame());
         }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public IEnumerator WinGame()

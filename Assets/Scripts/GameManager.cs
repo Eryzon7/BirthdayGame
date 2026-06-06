@@ -1,15 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public List<CakeLayerData> cakeLayers = new List<CakeLayerData>();
+
     public bool paddleGameCompleted;
     public bool paddleGameFailed;
     public bool musicGameCompleted;
     public bool musicGameFailed;
     public bool cakeGameCompleted;
-    public bool cakeGameFailed;
 
     private void Awake()
     {
@@ -38,12 +40,12 @@ public class GameManager : MonoBehaviour
             return 0;
         }
 
-        if (GameManager.Instance.paddleGameCompleted)
+        if (GameManager.Instance.paddleGameCompleted && !GameManager.Instance.musicGameCompleted)
         {
             return 1;
         }
 
-        if (GameManager.Instance.musicGameCompleted)
+        if (GameManager.Instance.musicGameCompleted && !GameManager.Instance.cakeGameCompleted)
         {
             return 2;
         }

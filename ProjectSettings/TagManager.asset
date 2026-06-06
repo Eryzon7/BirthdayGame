@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - aspid
+  - floor
   layers:
   - Default
   - TransparentFX

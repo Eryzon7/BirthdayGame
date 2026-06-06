@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BounceBar : MonoBehaviour
 {
-     public float bounceForce = 10f;
+    public float bounceForce = 10f;
     public float speed = 10f;
     public float limitX = 7f;
 
